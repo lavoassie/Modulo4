@@ -1,0 +1,31 @@
+*{
+    color: rgb(89, 43, 226);
+}
+
+button{
+    background: linear-gradient(90deg, #d61fff 0%, #1c329d 100%);
+}
+
+#titulo {
+    background: #ccc;
+    background: linear-gradient(90deg, rgb(217, 72, 0), rgb(198, 0, 0));
+    font-family: system-ui;
+    font-size: 4rem;
+    line-height: 115%;
+  
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+
+#texto{
+    background: #ccc;
+    background: linear-gradient(90deg, rgb(255, 128, 0), rgb(89, 0, 198));
+    font-family: system-ui;
+    font-size: 4rem;
+    line-height: 115%;
+    font-size: 40px;
+    margin-top: 2rem;
+    text-transform: uppercase;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}

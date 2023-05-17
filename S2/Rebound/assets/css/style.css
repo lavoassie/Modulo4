@@ -1,0 +1,23 @@
+form{
+    background-image: url(../img/conciertos.jpeg);
+    background-repeat: repeat;
+    background-size:contain;
+    padding: 2rem;
+    border-top: 2rem;
+    color: aliceblue;
+}
+
+.container{
+    margin-top: 2rem;
+}
+
+
+.contenedorBoton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.botones-superiores{
+background-color:transparent;
+}
