@@ -7,34 +7,38 @@ class Personajes {
     }
 }
 
-const getPersonaje = (id) => {
-    return new Promise(async (resolve,reject) => {
-        try {
-            let url = "https://swapi.dev/api/people/" + id;
-            let response = await fetch(url);
-            let data = await response.json();
-            let {name, height, mass} = data;
-            let nuevoPersonaje = new Personajes(name, height, mass);
-            resolve(nuevoPersonaje);
-        } catch (error) {
-            reject();
-        }
+async function* generator(desde, hasta) {
+    let i = desde;
+    while (i <= hasta) {
+      let url = "https://swapi.dev/api/people/" + i;
+      let response = await fetch(url);
+      let data = await response.json();
+      let { name, height, mass } = data;
+      let nuevoPersonaje = new Personajes(name, height, mass);
+      yield nuevoPersonaje;
+      i++;
+    }
+  }
 
-    })
-};
+  const primerGenerator = generator(1, 5);
+  const segundoGenerator = generator(6, 11);
+  const tercerGenerator = generator(12, 16);
+  async function generadorTarjetas(id) {
+    switch (id) {
+      case "tarjetaUno":
+        const primer = await primerGenerator.next();
+        return primer;
+      case "tarjetaDos":
+        const segundo = await segundoGenerator.next();
+        return segundo;
+      case "tarjetaTres":
+        const tercero = await tercerGenerator.next();
+        return tercero;
+    }
+  }
 
-function* generador1(){
-    yield getPersonaje(1);
-    yield getPersonaje(2);
-    yield getPersonaje(3);
-    yield getPersonaje(4);
-    yield getPersonaje(5);
-}
-
-let gen = generador1();
-
-const consultarTarjeta = function(id) {
-    const { value, done } = gen.next();
+async function consultarTarjeta(id) {
+    const { valor, done } = await generadorTarjetas(id);
     let div = document.getElementById(id);
     if (done) {
         console.log('No hay más personajes para mostrar');
@@ -45,9 +49,9 @@ const consultarTarjeta = function(id) {
           <span class="circle" data-range="1-5"></span>
           <div class="d-flex">
             <span class="${id}-circle"></span>
-            <h5>Altura: ${value.height}</h5>
-            <h5>Nombre: ${value.name}</h5>
-            <h5>Peso: ${value.mass}</h5>
+            <h5>Altura: ${valor.height}</h5>
+            <h5>Nombre: ${valor.name}</h5>
+            <h5>Peso: ${valor.mass}</h5>
           </div>
         </div>
         `
