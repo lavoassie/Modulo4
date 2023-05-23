@@ -1,4 +1,3 @@
-
 class Personajes {
     constructor(name, height, mass){
         this.name = name;
@@ -8,15 +7,13 @@ class Personajes {
 }
 
 async function* generator(desde, hasta) {
-    let i = desde;
-    while (i <= hasta) {
+  for (let i = desde; i <= hasta; i++) {
       let url = "https://swapi.dev/api/people/" + i;
       let response = await fetch(url);
       let data = await response.json();
       let { name, height, mass } = data;
       let nuevoPersonaje = new Personajes(name, height, mass);
       yield nuevoPersonaje;
-      i++;
     }
   }
 
@@ -38,7 +35,7 @@ async function* generator(desde, hasta) {
   }
 
 async function consultarTarjeta(id) {
-    const { valor, done } = await generadorTarjetas(id);
+    const { value, done } = await generadorTarjetas(id);
     let div = document.getElementById(id);
     if (done) {
         console.log('No hay más personajes para mostrar');
@@ -49,9 +46,9 @@ async function consultarTarjeta(id) {
           <span class="circle" data-range="1-5"></span>
           <div class="d-flex">
             <span class="${id}-circle"></span>
-            <h5>Altura: ${valor.height}</h5>
-            <h5>Nombre: ${valor.name}</h5>
-            <h5>Peso: ${valor.mass}</h5>
+            <h5>Altura: ${value.height}</h5>
+            <h5>Nombre: ${value.name}</h5>
+            <h5>Peso: ${value.mass}</h5>
           </div>
         </div>
         `
