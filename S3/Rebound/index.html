@@ -13,7 +13,8 @@
 <body>
     <div class="container">
         <div class="row">
-            <div id="divIzquierdo" class="col-6">
+            <!-- Vista izquierda -->
+            <div id="divIzquierda" class="col-6">
                 <fieldset disabled>
                     <div class="mb-3">
                         <input type="text" id="disabledTextInput" class="form-control" placeholder="MEJORA TU PIZZA">
@@ -81,12 +82,41 @@
                     <p id="ingSeleccionados">Los ingredientes seleccionados son:</p>
                     <p id="ingExtras">Los ingrediente <b>extras</b> son:</p>
             </div>
-
-            <div id="divDerecho" class="col-6">
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Recipient's username"
+            
+            <!-- Vista derecha -->
+            <div id="divDerecha" class="col-6">
+                <fieldset disabled>
+                    <div class="mb-3">
+                        <input type="text" id="disabledTextInput" class="form-control" placeholder="RESUMEN DEL PEDIDO">
+                    </div>
+                </fieldset>
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Pizza XL</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">Ingredientes Extras</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Propina</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Ingresa Propina"
                         aria-label="Recipient's username" aria-describedby="button-addon2">
-                    <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>
+                    <button class="btn btn-outline-secondary" type="button" id="button-addon2">Enviar Pedido con Propina</button>
                 </div>
             </div>
             </form>
