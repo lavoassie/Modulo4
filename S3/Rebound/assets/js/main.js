@@ -11,11 +11,11 @@
     []Al hacer click en "ingresar propina", se deben agregar $1.000 pesos como valor por defecto.
       [x]El input debe estar guardado en una variable
       [x]A esta variable, voy a activar un evento que al hacer click sobre el input va a mostrar la propina sugerida
-    []Al ingresar otro valor de propina, se debe ver reflejado el cambio en la pantalla.
-      []Obtener el (nuevo) valor del input
-      []Se debe mostrar como un alert
-    []Al hacer click en "enviar pedido con propina", se debe enviar un mensaje por medio de un alert: "Su propina de $2.500 ha sido enviada"
-    []Si el pedido no tiene propina, el mensaje de alerta debe mostrar: "Aún no se ha definido una propina"
+    [x]Al ingresar otro valor de propina, se debe ver reflejado el cambio en la pantalla.
+      [x]Obtener el (nuevo) valor del input
+      [x]Se debe mostrar como un alert
+    [x]Al hacer click en "enviar pedido con propina", se debe enviar un mensaje por medio de un alert: "Su propina de $2.500 ha sido enviada"
+    [x]Si el pedido no tiene propina, el mensaje de alerta debe mostrar: "Aún no se ha definido una propina"
 */
 
 
@@ -26,16 +26,25 @@ const costoBase = 15000; // Monto base, valor pizza XL
 const propina = 1000;
 let inputPropina = document.getElementById("propina");
 let tablaPropinas = document.getElementById("propinas");
-
+let botonEnviar = document.getElementById("btnEnviar");
 
 //Al hacer click sobre el input propina va a mostrar la propina sugerida (1000)
-inputPropina.addEventListener("focus", function() {
-  inputPropina.value = propina;
+inputPropina.addEventListener("focus", function () {
   tablaPropinas.innerHTML = propina;
+  inputPropina.value = propina;
 });
 
 //Al ingresar otro valor de propina, se debe ver reflejado el cambio en la pantalla.
-
+//Botón
+botonEnviar.addEventListener("click", function () {
+  let propinaIngresadaUsuario = inputPropina.value;
+  if (propinaIngresadaUsuario === '') {
+    alert("Aún no se ha definido una propina")
+  } else {
+    tablaPropinas.innerHTML = propinaIngresadaUsuario;
+    alert(`Su propina de: $${propinaIngresadaUsuario} ha sido enviada.`);
+  }
+})
 
 let ingSeleccionados = document.getElementById("ingSeleccionados");
 //Al seleccionar los ingredientes gratis se debe proyectar en la ventana derecha el valor de la pizza XL (15.000)
