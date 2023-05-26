@@ -9,9 +9,11 @@
     [x]Los ingredientes seleccionados EXTRA deben mostrarse en pantalla en: <p id="ingExtras">
     [x]El valor de los ingredientes seleccionados EXTRA deben mostrarse en la ventana derecha en "ingredientes extra" 
     []Al hacer click en "ingresar propina", se deben agregar $1.000 pesos como valor por defecto.
-      []El input debe estar guardado en una variable
-      []A esta variable, voy a activar un evento que al hacer click sobre el input va a mostrar la propina sugerida
+      [x]El input debe estar guardado en una variable
+      [x]A esta variable, voy a activar un evento que al hacer click sobre el input va a mostrar la propina sugerida
     []Al ingresar otro valor de propina, se debe ver reflejado el cambio en la pantalla.
+      []Obtener el (nuevo) valor del input
+      []Se debe mostrar como un alert
     []Al hacer click en "enviar pedido con propina", se debe enviar un mensaje por medio de un alert: "Su propina de $2.500 ha sido enviada"
     []Si el pedido no tiene propina, el mensaje de alerta debe mostrar: "Aún no se ha definido una propina"
 */
@@ -23,11 +25,17 @@ let checkContador = 0; // Contador de checkboxes seleccionados
 const costoBase = 15000; // Monto base, valor pizza XL
 const propina = 1000;
 let inputPropina = document.getElementById("propina");
+let tablaPropinas = document.getElementById("propinas");
+
 
 //Al hacer click sobre el input propina va a mostrar la propina sugerida (1000)
 inputPropina.addEventListener("focus", function() {
   inputPropina.value = propina;
+  tablaPropinas.innerHTML = propina;
 });
+
+//Al ingresar otro valor de propina, se debe ver reflejado el cambio en la pantalla.
+
 
 let ingSeleccionados = document.getElementById("ingSeleccionados");
 //Al seleccionar los ingredientes gratis se debe proyectar en la ventana derecha el valor de la pizza XL (15.000)
