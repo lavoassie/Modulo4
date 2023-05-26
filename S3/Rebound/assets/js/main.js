@@ -19,8 +19,11 @@ const checkboxes = document.querySelectorAll('input[name="ingrediente"]');
 const maximoGratis = 3; // Máximo número de checkboxes permitidos
 let checkContador = 0; // Contador de checkboxes seleccionados
 const costoBase = 15000; // Monto base, valor pizza XL
-let ingSeleccionados = document.getElementById("ingSeleccionados");
 
+
+let ingSeleccionados = document.getElementById("ingSeleccionados");
+//Al seleccionar los ingredientes gratis se debe proyectar en la ventana derecha el valor de la pizza XL (15.000)
+document.getElementById("thValorPizzaXL").innerHTML = costoBase;
 //For que recorre cada checkbox seleccionado por el cliente para obtener el valor
 //Cada selección se sumará a la variable checkContador
 checkboxes.forEach(function (checkbox) {
@@ -38,7 +41,7 @@ checkboxes.forEach(function (checkbox) {
       let totalAPagar = costoBase + ingredientesExtra;
       console.log(totalAPagar);
       //El valor de los ingredientes seleccionados EXTRA deben mostrarse en la ventana derecha en "ingredientes extra"
-      document.getElementById("tdExtras").innerHTML = ingredientesExtra
+      document.getElementById("tdExtras").innerHTML = ingredientesExtra;
     }
 
     //Mostrar en pantalla derecha los tres ingredientes gratis.
@@ -53,14 +56,14 @@ checkboxes.forEach(function (checkbox) {
 
       return ingredientes;
     }
-    //Mostrando los ingredientes gratis.
+
+    //Mostrando los ingredientes gratis al usuario.
     let ingredientesGratisSeleccionados = obtenerIngredientesSeleccionados().slice(0, 3);
-    document.getElementById("ingSeleccionados").innerHTML = ingredientesGratisSeleccionados;
-    //Agregar el valor de la pizza XL
-    //Mostrando los ingredientes extra.
+    ingSeleccionados.innerHTML = ingredientesGratisSeleccionados;
+    //Mostrando los ingredientes extra al usuario.
     let ingredientesExtrasSeleccionados = obtenerIngredientesSeleccionados().slice(3);
     document.getElementById("ingExtras").innerHTML = ingredientesExtrasSeleccionados;
-
   });
 });
+
 
