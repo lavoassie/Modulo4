@@ -10,8 +10,17 @@ let inputTitulo = document.getElementById("inputTitulo");
 let inputMensaje = document.getElementById("inputMensaje");
 let inputRemitente = document.getElementById("inputRemitente");
 let botonEnviar = document.getElementById("btnEnviar");
-let correos = [];
+let correos = document.getElementById("correosCC").value;
+let correosCC = [];
 
-botonEnviar.addEventListener("click", function(...ccCorreos) {
+botonEnviar.addEventListener("click", function(e) {
+  e.preventDefault();
   console.log(`PARA: ${inputDestinatario.value} \n TÍTULO: ${inputTitulo.value} \n MENSAJE: ${inputMensaje.value} \n FROM: ${inputRemitente.value}`);
 });
+
+for(let correo of correos){
+  correosCC.push(correos)
+  console.log(correo);
+}
+
+//Honestamente no pude terminar esta tarea :(lo intente mucho 
